@@ -48,3 +48,15 @@ printResults.call(obj2.obj); // ["a", "b", "c", "d", "e"]
 // creating a function.
 const boundPrint = printResults.bind(obj2);
 boundPrint(); //["!", "@", "#", "$", "%"]
+
+const obj3 = {
+  results: ['z', 'x', 'c', 'v', 'b'],
+  getResults: printResults,
+  getResultsArrow: printResultsArrow
+}
+
+// The 'this' value used is defined by the call-site of the function
+obj3.getResults(); // ["z", "x", "c", "v", "b"]
+
+// The call site (obj3) has no this defined
+obj3.getResultsArrow(); // undefined . No this binding
